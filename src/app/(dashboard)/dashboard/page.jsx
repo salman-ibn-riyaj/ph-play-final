@@ -1,16 +1,30 @@
-'use client'
-import React from "react";
-import { Pie, PieChart } from "recharts";
-
-
-const data = [
-  { name: "Group A", value: 400, fill: "#0088FE" },
-  { name: "Group B", value: 300, fill: "#00C49F" },
-  { name: "Group C", value: 300, fill: "#FFBB28" },
-  { name: "Group D", value: 200, fill: "#FF8042" },
-];
+"use client";
+import { InstalledAppContext } from "@/Context/Context";
+import React, { useContext, useEffect, useState } from "react";
+import { Legend, Pie, PieChart, Tooltip } from "recharts";
 
 const DashboardPage = () => {
+  const { installedApps, setInstalledApp } = useContext(InstalledAppContext);
+  console.log(installedApps);
+  const instaNum = installedApps.length;
+
+  const [apps, setApps] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/appsData.json")
+      .then((res) => res.json())
+      .then((apps) => setApps(apps));
+  }, []);
+
+  console.log(apps);
+
+  const uninstalledAppsNum = apps.length - instaNum;
+
+  const data = [
+    { name: "Installed Apps", value: instaNum, fill: "#0088FE" },
+    { name: "UnInstalled Apps", value: uninstalledAppsNum, fill: "#00C49F" },
+  ];
+
   return (
     <div>
       <PieChart
@@ -18,7 +32,7 @@ const DashboardPage = () => {
           width: "100%",
           maxWidth: "500px",
           maxHeight: "80vh",
-          margin: '15px auto',
+          margin: "15px auto",
           aspectRatio: 1,
         }}
         responsive
@@ -35,7 +49,8 @@ const DashboardPage = () => {
           dataKey="value"
           isAnimationActive={true}
         />
-        
+        <Legend></Legend>
+        <Tooltip></Tooltip>
       </PieChart>
     </div>
   );

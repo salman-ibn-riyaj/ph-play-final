@@ -7,12 +7,12 @@ import { Toaster } from "react-hot-toast";
 const MainLGroupLayout = ({ children }) => {
   return (
     <div>
-      <Providers>
-        <Toaster></Toaster>
+     
+        <Toaster position="top-left"></Toaster>
         <Navbar></Navbar>
         {children}
         <Footer></Footer>
-      </Providers>
+     
 
       
     </div>
