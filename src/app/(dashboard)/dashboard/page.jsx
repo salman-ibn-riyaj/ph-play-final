@@ -1,7 +1,11 @@
 "use client";
 import { InstalledAppContext } from "@/Context/Context";
 import React, { useContext, useEffect, useState } from "react";
-import { Legend, Pie, PieChart, Tooltip } from "recharts";
+import dynamic from 'next/dynamic';
+
+const { Legend, Pie, PieChart, Tooltip } = dynamic(() => import('recharts'), {
+  ssr: false
+});
 
 const DashboardPage = () => {
   const { installedApps, setInstalledApp } = useContext(InstalledAppContext);
