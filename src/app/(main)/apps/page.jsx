@@ -1,0 +1,29 @@
+import React from "react";
+import fs from "fs";
+import path from "path";
+import AppCard from "@/components/AppCard/AppCard";
+
+const AllTheAppsPage = async () => {
+  const filePath = path.join(process.cwd(), "public", "appsData.json");
+  const data = fs.readFileSync(filePath, "utf-8");
+  const apps = JSON.parse(data);
+  console.log(apps);
+  return (
+    <div className="my-12">
+      <div className="my-5 text-center">
+        <h2 className="font-bold text-3xl">All the Apps </h2>
+        <p className="text-gray-500">
+          salman is fetching data so foolishly ya rab my another name is salman
+          shah
+        </p>
+      </div>
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {apps.map((app) => (
+          <AppCard key={app.id} app={app}></AppCard>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AllTheAppsPage;
