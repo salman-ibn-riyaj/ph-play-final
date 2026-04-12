@@ -12,7 +12,7 @@ const DashboardPage = () => {
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/appsData.json")
+    fetch("/appsData.json")
       .then((res) => res.json())
       .then((data) => setApps(data));
   }, []);
