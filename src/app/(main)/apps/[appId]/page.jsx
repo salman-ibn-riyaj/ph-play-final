@@ -6,8 +6,25 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { TbFileLike } from "react-icons/tb";
 import Rechart from "@/components/AppCard/Rechart/Rechart";
-import { InstalledAppContext } from "@/Context/Context";
 import InstallButton from "@/components/InstallButton/InstallButton";
+
+export async function generateMetadata({ params }) {
+  const {appId} = await params;
+
+  const filePath = path.join(process.cwd(), "public", "appsData.json");
+  const data = fs.readFileSync(filePath, "utf-8");
+  const apps = JSON.parse(data);
+  console.log(apps);
+
+  const expectedAppData = apps.find(
+    (appData) => appData.id === parseInt(appId),
+  );
+
+  return {
+    title: expectedAppData.title,
+    description: expectedAppData.description,
+  };
+}
 
 const AppDetailPage = async ({ params }) => {
   const { appId } = await params;
@@ -73,9 +90,7 @@ const AppDetailPage = async ({ params }) => {
               </div>
             </div>
             {/* install btn compo  */}
-            <InstallButton
-              expectedAppData={ expectedAppData }
-            ></InstallButton>
+            <InstallButton expectedAppData={expectedAppData}></InstallButton>
           </div>
         </div>
       </div>
