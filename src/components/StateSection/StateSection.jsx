@@ -8,7 +8,7 @@ const StateSection = () => {
           Trusted by Millions, Built for You
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
           <div>
             <p>Total Downloads</p>
             <h2 className="font-bold text-3xl">29.6M</h2>
