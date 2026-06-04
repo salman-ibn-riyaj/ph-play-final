@@ -5,6 +5,9 @@ A modern app discovery and installation platform built with Next.js, where users
 🌐 **Live Demo:** ph-play-final.vercel.app
 ---
 
+<img width="1921" height="3551" alt="screencapture-ph-play-final-vercel-app-2026-06-05-00_58_57" src="https://github.com/user-attachments/assets/ac3a1a56-f293-49dd-8b45-eea2e6f30c73" />
+
+
 ## ✨ Features
 
 - 🔍 **Browse Apps** — Discover trending social and utility apps
